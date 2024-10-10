@@ -87,3 +87,7 @@ app.delete('/users/:id', async(req, res) =>{
     }
    
    })
+   const port = 3000;
+app.listen(port, ()=>{
+    console.log(`server is listing on http:localhost:${port}`)
+})
