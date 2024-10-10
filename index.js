@@ -72,4 +72,8 @@ app.put('/users/:id', async(req, res) =>{
          res.status(500).json({message: "error in updating users"})
     }
 })
-
+//delete user 
+app.delete('/users/:id', async(req, res) =>{
+    try {
+        
+    }
