@@ -75,5 +75,15 @@ app.put('/users/:id', async(req, res) =>{
 //delete user 
 app.delete('/users/:id', async(req, res) =>{
     try {
-        
+       const deleteUser = await User.findByIdAndDelete(req.params.id)
+       if(!deleteUser){
+           res.status(404).json({message: "404 not found"})
+       }
+       res.status(200).json({message: `delete user with ID ${req.params.id}`})
+    } catch (error) {
+       console.log(error)
+       res.status(500).json({message: "error in deleting users"})
+       
     }
+   
+   })
