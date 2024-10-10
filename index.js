@@ -52,3 +52,24 @@ app.post('/users', async(req, res) =>{
     }
 })
 
+// updating users 
+app.put('/users/:id', async(req, res) =>{
+    try {
+        const updateUser = await User.findByIdAndUpdate(req.params.id,
+            {
+                name: req.body.name,
+               email: req.body.email,
+                age: req.body.age
+            }, 
+            {new: true}
+        )
+        if(!updateUser){
+            res.status(404).json({message: "404 not found"})
+        }
+        res.status(200).json({Message: "update user successfull", data: updateUser})
+    } catch (error) {
+        console.log(error)
+         res.status(500).json({message: "error in updating users"})
+    }
+})
+
